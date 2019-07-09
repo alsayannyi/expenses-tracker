@@ -1,4 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+It is an Expenses Tracker that can switch between Graph and Table Represantion and filter result by Day/Week/Month Period.
+
+### It's written with:
+
+React, Redux, React-Redux libraries
 
 ## Available Scripts
 
