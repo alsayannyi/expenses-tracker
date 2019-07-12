@@ -1,6 +1,10 @@
 import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
+import { deflate } from "zlib";
+import { ADD_EXPENSE } from "../../redux/actions/actions";
+import { useSelector } from "react-redux";
+import { format, isThisWeek } from "date-fns";
 
 const MONTHS = [
   "January",
@@ -88,6 +92,31 @@ const seriesType = {
   }
 };
 
+// function getStartWeek() {
+//   let d = new Date().getDay(); // 5
+//   let delta = d - 1; //4
+//   let weekStartDate = new Date().getDate() - delta;
+//   let weekStart = new Date(new Date().setDate(weekStartDate));
+// }
+
+// const extractDataToChartSeries = (data, chartSeries) => {
+//   data.forEach(expense => {
+//     const { type, sum, date } = expense;
+//     const epxenseDay = new Date(date).getDay();
+//     const expenseMonth = new Date(date).getMonth();
+//     const expenseDate = new Date(date).getDate();
+
+//     if (epxenseDay === new Date().getDay())
+//       chartSeries.SHOW_DAY.data = chartSeries.SHOW_DAY.data.push(
+//         parseFloat(sum)
+//       );
+//     if (expenseMonth === new Date().getMonth()) {
+//       chartSeries.SHOW_MONTH.data[expenseDate - 1] =
+//         chartSeries.SHOW_MONTH.data[expenseDate - 1] + parseFloat(sum);
+//     }
+//   });
+// };
+
 function getMonthDaysAray(currentDay, arr = []) {
   let dd;
   const mm =
@@ -159,6 +188,19 @@ let options = {
 };
 
 const Chart = ({ activePeriod }) => {
+  const currentExpenses = useSelector(state => {
+    return state.totalExpenses;
+  });
+
+  const dateCheckTest = data => {
+    data.forEach(expense => {
+      const { date } = expense;
+      const result = isThisWeek(new Date(date));
+      console.log("is this expensein this week ? -", result);
+    });
+  };
+  dateCheckTest(currentExpenses);
+
   if (activePeriod)
     options = {
       ...options,

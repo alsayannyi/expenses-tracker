@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import logo from "../../logo.svg";
 import "../../bootstrap.min.css";
@@ -23,17 +24,19 @@ function ExpenseTracker({
   return (
     <>
       <header className="App container-fluid">
-        <nav className="navbar navbar-dark bg-dark">
+        <nav id="header" className="navbar navbar-dark bg-dark">
           <a className="navbar-brand" href="#ExpenseTracker">
             <img src={logo} className="App-logo rounded" alt="logo" />
           </a>
-          <h5 className="mr-auto">Expenses Tracker</h5>
+          <h5 className="mb-0 mr-auto">Expenses Tracker</h5>
         </nav>
       </header>
 
       <main className="container-fluid">
         <div className="row mt-4">
-          <Button name="New Expense" />
+          <Link to="/add" className="col-3 ml-3">
+            <Button name="New Expense" cssClass="btn btn-primary" />{" "}
+          </Link>
         </div>
         <div className="row mt-4 no-gutters justify-content-center">
           <div className=" btn-group" role="group">

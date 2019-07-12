@@ -3,7 +3,7 @@ import "./toggleBtn.css";
 
 const ToggleButton = ({ showGraphClicked }) => {
   return (
-    <div id="app-cover" className="col-12">
+    <div id="app-cover" className="col-xs-3">
       <div
         className="btn-wrapper"
         // selected={selected}

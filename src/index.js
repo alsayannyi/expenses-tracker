@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./index.css";
 import ExpenseTracker from "./components/ExpenseTracker/ExpenseTracker";
 import * as serviceWorker from "./serviceWorker";
 import { createStore } from "redux";
 import { Provider as ReduxProvider } from "react-redux";
 import rootReducer from "./redux/reducers/index";
+import ExpenseWrapper from "./components/Wrapper/ExpenseWrapper";
 // import initialState from "./redux/reducers/initialState";
 
 // const preloadedState = {
@@ -23,7 +25,12 @@ console.log(store.getState());
 
 ReactDOM.render(
   <ReduxProvider store={store}>
-    <ExpenseTracker />
+    <Router>
+      <>
+        <Route exact path="/" component={ExpenseTracker} />
+        <Route path="/add" component={ExpenseWrapper} />
+      </>
+    </Router>
   </ReduxProvider>,
   document.getElementById("root")
 );
