@@ -7,7 +7,7 @@ export const PERIOD_FILTERS = {
   SHOW_DAY: "SHOW_DAY",
   SHOW_WEEK: "SHOW_WEEK",
   SHOW_MONTH: "SHOW_MONTH",
-  SHOW_YEAR: "SHOW_YEAR"
+  SHOW_YEAR: "WHOLE_YEAR"
 };
 
 //action creators
